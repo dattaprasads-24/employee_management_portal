@@ -27,7 +27,7 @@ pipeline {
                 script {
                     echo "Logging into Docker Hub..."
                     withCredentials([usernamePassword(credentialsId: "${env.DOCKER_CREDS_ID}", passwordVariable: 'DOCKER_PASS', usernameVariable: 'DOCKER_USER')]) {
-                        sh "echo ${DOCKER_PASS} | docker login -u ${DOCKER_USER} --password-stdin"
+                        sh 'echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin'
                     }
 
                     echo "Building and Pushing Backend Image..."
