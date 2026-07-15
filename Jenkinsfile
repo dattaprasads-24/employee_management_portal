@@ -3,9 +3,9 @@ pipeline {
 
     environment {
         // 1.  AWS Instance IDs
-        DB_INSTANCE_ID       = '10.0.3.95'
-        BACKEND_INSTANCE_ID  = '10.0.2.167'
-        FRONTEND_INSTANCE_ID = '13.206.238.14'
+        DB_INSTANCE_ID       = 'i-05c0050be3334e158'
+        BACKEND_INSTANCE_ID  = 'i-07768fb71153b6365'
+        FRONTEND_INSTANCE_ID = 'i-0c5e9f6b1a4517f61'
         
         // 2. AWS Region
         AWS_DEFAULT_REGION   = 'ap-south-1'
