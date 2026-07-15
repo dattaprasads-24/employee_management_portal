@@ -10,7 +10,7 @@ app.use(express.json());
 
 // MySQL Database Connection Configuration
 const db = mysql.createConnection({
-    host: '10.0.3.95', // DB private IP
+    host: '10.0.3.60', // DB private IP
     user: 'employee_user',
     password: 'EmployeePassword123',
     database: 'employee_db',
