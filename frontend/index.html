@@ -5,20 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Employee Portal</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 40px; background: #f4f4f9; text-align: center; }
-        .container { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); max-width: 500px; margin: 0 auto; }
-        h1 { color: #333; }
-        ul { list-style-type: none; padding: 0; }
-        li { background: #eee; margin: 10px 0; padding: 10px; border-radius: 4px; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #f4f6f9; margin: 0; padding: 40px; display: flex; justify-content: center; }
+        .container { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); width: 100%; max-width: 600px; text-align: center; }
+        h1 { color: #333; margin-bottom: 25px; }
+        .form-group { margin-bottom: 15px; text-align: left; }
+        .form-group label { display: block; margin-bottom: 5px; font-weight: 600; color: #555; }
+        .form-group input { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        .btn-add { background-color: #007bff; color: white; border: none; padding: 12px 20px; border-radius: 4px; font-size: 16px; cursor: pointer; width: 100%; font-weight: bold; margin-bottom: 25px; transition: background 0.2s; }
+        .btn-add:hover { background-color: #0056b3; }
+        .employee-list { margin-top: 20px; }
+        .employee-card { background: #f8f9fa; padding: 15px; border-radius: 4px; margin-bottom: 10px; text-align: center; font-size: 16px; font-weight: 500; color: #333; }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Employee Portal Management</h1>
-        <div id="status">Loading data from backend...</div>
-        <ul id="employee-list"></ul>
-    </div>
 
-    <script src="frontend.js"></script>
+<div class="container">
+    <h1>Employee Portal Management</h1>
+
+    <!-- Add Employee Form -->
+    <form id="employeeForm">
+        <div class="form-group">
+            <label for="empName">Employee Name:</label>
+            <input type="text" id="empName" placeholder="Enter full name" required>
+        </div>
+        <div class="form-group">
+            <label for="empRole">Role / Designation:</label>
+            <input type="text" id="empRole" placeholder="e.g. DevOps Engineer" required>
+        </div>
+        <button type="submit" class="btn-add">Add Employee</button>
+    </form>
+
+    <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
+
+    <!-- Display List -->
+    <div class="employee-list" id="employeeList">
+        <p>Loading employees...</p>
+    </div>
+</div>
+
+<!-- Scripts-->
+<script src="frontend.js"></script>
 </body>
 </html>
