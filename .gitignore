@@ -1,0 +1,17 @@
+# Terraform files
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+*.tfvars
+*.tfvars.json
+override.tf
+override.tf.json
+
+# Node modules
+node_modules/
+npm-debug.log
+
+# OS files
+.DS_Store
+Thumbs.db
