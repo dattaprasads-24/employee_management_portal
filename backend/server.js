@@ -8,7 +8,7 @@ app.use(express.json());
 
 // atabase Private IP टा
 const db = mysql.createConnection({
-    host: '10.0.3.60',
+    host: '10.0.3.251',
     user: 'employee_user',
     password: 'EmployeePassword123',
     database: 'employee_db',
