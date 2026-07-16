@@ -2,11 +2,11 @@ pipeline {
     agent any
 
     environment {
-        // 🎯 Update with your actual AWS Instance IDs
-        FRONTEND_INSTANCE_ID = 'i-0d2002d9b502e5122' 
+        //  Your actual AWS Instance IDs
+        FRONTEND_INSTANCE_ID = 'i-0d2002d9b502e5122'
         BACKEND_INSTANCE_ID  = 'i-0b06dd88bc9d33be5'
         DATABASE_INSTANCE_ID = 'i-087b8a625d86269bc'
-        
+
         AWS_REGION           = 'ap-south-1' // Mumbai Region
         DOCKER_HUB_USER      = 'dattaprasads01'
     }
@@ -23,7 +23,8 @@ pipeline {
             steps {
                 echo 'Building and pushing backend Docker image...'
                 withCredentials([usernamePassword(credentialsId: 'docker-hub-creds', usernameVariable: 'USER', passwordVariable: 'PASS')]) {
-                    sh "docker login -u ${USER} -p ${PASS}"
+                    // 🪄 Single quotes ensure special characters in password are handled perfectly without shell parsing errors
+                    sh 'echo "$PASS" | docker login -u "$USER" --password-stdin'
                     sh "cd backend && docker build --no-cache -t ${DOCKER_HUB_USER}/employee-backend:latest ."
                     sh "docker push ${DOCKER_HUB_USER}/employee-backend:latest"
                 }
@@ -34,6 +35,8 @@ pipeline {
             steps {
                 echo 'Building and pushing frontend Docker image...'
                 withCredentials([usernamePassword(credentialsId: 'docker-hub-creds', usernameVariable: 'USER', passwordVariable: 'PASS')]) {
+                    // 🪄 Secure stdin method applied to frontend stage as well
+                    sh 'echo "$PASS" | docker login -u "$USER" --password-stdin'
                     sh "cd frontend && docker build --no-cache -t ${DOCKER_HUB_USER}/employee-frontend:latest ."
                     sh "docker push ${DOCKER_HUB_USER}/employee-frontend:latest"
                 }
